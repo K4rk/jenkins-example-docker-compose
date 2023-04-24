@@ -12,7 +12,7 @@ services:
        - OOKLA_EULA_GDPR=true
        - AUTH=true
      ports:
-       - "9044:80"
+       - "9043:80"
      logging:
        driver: "json-file"
        options:
