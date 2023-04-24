@@ -11,6 +11,8 @@ services:
        - PUID=${PUID:-100}
        - OOKLA_EULA_GDPR=true
        - AUTH=true
+     ports:
+       - "9043:80"
      logging:
        driver: "json-file"
        options:
