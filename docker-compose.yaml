@@ -1,8 +1,19 @@
-version: '3'
+version: '3.3'
 services:
-  echo-server:
-    image: ealen/echo-server:latest
-    environment:
-      - ENABLE__ENVIRONMENT=false
-    ports:
-      - 3000:80
+  speedtest:
+     container_name: speedtest
+     image: henrywhitaker3/speedtest-tracker
+     volumes:
+       - ./data:/config
+     environment:
+       - TZ="Europe/Berlin"
+       - PGID=${PGID:-1000}
+       - PUID=${PUID:-100}
+       - OOKLA_EULA_GDPR=true
+       - AUTH=true
+     logging:
+       driver: "json-file"
+       options:
+           max-file: "10"
+           max-size: "200k"
+     restart: unless-stopped
